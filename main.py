@@ -100,7 +100,6 @@ def scheduler():
 
 
 if __name__ == "__main__":
-    post_content()
     scheduler()
     while True:
         print(".")
