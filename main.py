@@ -97,8 +97,6 @@ def post_content():
 def scheduler():
     schedule.every().day.at("09:00").do(post_content)
     schedule.every().day.at("18:00").do(post_content)
-    schedule.every().day.at("22:42").do(post_content)
-    schedule.every().day.at("22:52").do(post_content)
 
 
 if __name__ == "__main__":
