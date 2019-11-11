@@ -6,6 +6,7 @@ from oauth2client.service_account import ServiceAccountCredentials
 import schedule
 import time
 from random import randrange
+import datetime
 
 
 creds = ServiceAccountCredentials.from_json_keyfile_dict(
@@ -102,6 +103,6 @@ def scheduler():
 if __name__ == "__main__":
     scheduler()
     while True:
-        print(".")
+        print(str(datetime.datetime.now()))
         schedule.run_pending()
-        time.sleep(1)
+        time.sleep(30)
