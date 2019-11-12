@@ -9,10 +9,6 @@ from random import randrange
 import datetime
 
 
-creds = ServiceAccountCredentials.from_json_keyfile_dict(
-    config["GOOGLE_CLIENT_SECRET_JSON"], scopes=config["SCOPES"]
-)
-gspread_client = gspread.authorize(creds)
 HEADING_COL = 1
 TIP_COL = 2
 CODE_COL = 3
@@ -59,6 +55,10 @@ def update_view_count(sheet, count, pos):
 
 
 def prepare_content():
+    creds = ServiceAccountCredentials.from_json_keyfile_dict(
+        config["GOOGLE_CLIENT_SECRET_JSON"], scopes=config["SCOPES"]
+    )
+    gspread_client = gspread.authorize(creds)
     sheet = gspread_client.open(config["GOOGLE_SHEET_NAME"]).sheet1
     cleaned_sheet = clean_data(sheet)
     vcc_map = generate_content_map(cleaned_sheet)
